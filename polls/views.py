@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        return  return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 class DetailView(generic.DetailView):
     model = Question
@@ -28,3 +28,4 @@ class ResultsView(generic.DetailView):
 
 
 def vote(request, question_id):
+    return HttpResponse("You're voting on question %s." % question_id)
